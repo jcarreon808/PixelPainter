@@ -5,6 +5,11 @@ var eraseButton = document.createElement('button');
     eraseButton.innerHTML = 'ERASE';
     eraseButton.addEventListener('click',storeColorPicker);
     pixelPainter.appendChild(eraseButton);
+var straightLineBtn = document.createElement('button');
+    straightLineBtn.id = 'straightLineBtn';
+    straightLineBtn.innerHTML = 'Straight Line';
+    straightLineBtn.addEventListener('click',fooo);
+    pixelPainter.appendChild(straightLineBtn);
 //******Clear Button*******
 var clearButton = document.createElement('button');
     clearButton.id ='clear';
@@ -15,20 +20,6 @@ var palletteDiv = document.createElement('div');
 var palletteColorArr = ['#ffff00', '#0000ff', '#009900', '#ff3399','#663300', '#ff0000', '#000000', '#66ffff', '#ff8000', '#c6ff1a'];
 var onOffBool = null;
 
-//*******Functions*******
-//***ColorPick***
-function storeColorPicker (event){
-  currentColor = event.target.style.backgroundColor;
-
-}
-//***injectColorPicker***
-function injectColorPicker (event){
-  if(event.target.style.backgroundColor === 'white'){
-    event.target.style.backgroundColor = currentColor;
-  }else if(event.target.style.backgroundColor != 'white'){
-    event.target.style.backgroundColor = currentColor;
-    }
-}
 
 //******************************
 //********Color Pallette********
@@ -66,31 +57,44 @@ pixelPainter.appendChild(displayDiv);
 }
 gridTable(100, 100);
 
+//*******Color PalletteFunctions*******
+//***ColorPick***
+function storeColorPicker (event){
+  currentColor = event.target.style.backgroundColor;
 
+}
+//***injectColorPicker***
+function injectColorPicker (event){
+  if(event.target.style.backgroundColor === 'white'){
+    event.target.style.backgroundColor = currentColor;
+  }else if(event.target.style.backgroundColor != 'white'){
+    event.target.style.backgroundColor = currentColor;
+    }
+}
 
 //********Drag Color Functions
 function mouseDown(){
   onOffBool = true;
-  console.log('downBool: ', onOffBool);
   if(onOffBool === true ){
     this.style.backgroundColor = currentColor;
   }
 }
 function mouseOver(){
-  console.log('mouseOver: ', onOffBool);
   if(onOffBool === true){
     this.style.backgroundColor = currentColor;
   }
 }
+
 function mouseUp(){
   onOffBool = false;
-  console.log('mouseUp: ', onOffBool);
   if (onOffBool === false){
     this.style.backgroundColor = currentColor;
   }
 }
-
-
+//*********Straight Line Function********
+function straightLine(){}
+//*********
+//*********EventListeners
 clearButton.addEventListener('click', function(event){
   var gridClear = document.querySelectorAll('.displayCell');
   for( var x = 0; x<gridClear.length; x++){
